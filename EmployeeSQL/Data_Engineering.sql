@@ -18,7 +18,7 @@ CREATE TABLE Employees (
 	last_name VARCHAR(20) UNIQUE,
 	sex VARCHAR(1),
 	hire_date DATE NOT NULL,
-	FOREIGN KEY(emp_title_id)  references  Titles,
+	FOREIGN KEY(emp_title_id)  references  Titles(title_id),
 );
 
 SELECT *
@@ -29,8 +29,8 @@ DROP TABLE Department_Employees;
 CREATE TABLE Department_Employees (
 	emp_no INT NOT NULL,
 	dept_no VARCHAR(5) NOT NULL,
-	FOREIGN KEY(emp_no)  references  Employees,
-	FOREIGN KEY(dept_no)  references  Departments
+	FOREIGN KEY(emp_no)  references  Employees(emp_no),
+	FOREIGN KEY(dept_no)  references  Departments(dept_no)
 );
 
 SELECT *
@@ -41,8 +41,8 @@ DROP TABLE Department_Managers
 CREATE TABLE Department_Managers (
 	dept_no VARCHAR(5) NOT NULL,
 	emp_no INT NOT NULL,
-	FOREIGN KEY(emp_no)  references  Employees,
-	FOREIGN KEY(dept_no)  references  Departments
+	FOREIGN KEY(emp_no)  references  Employees(emp_no),
+	FOREIGN KEY(dept_no)  references  Departments(dept_no)
 );
 
 SELECT *
@@ -53,7 +53,7 @@ DROP TABLE Salaries
 CREATE TABLE Salaries (
 	emp_no INT,
 	salary INT,
-	FOREIGN KEY(emp_no)  references  Employees
+	FOREIGN KEY(emp_no)  references  Employees(emp_no)
 );
 
 SELECT *
